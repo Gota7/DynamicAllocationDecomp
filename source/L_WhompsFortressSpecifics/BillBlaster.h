@@ -19,7 +19,6 @@ struct BillBlaster : Platform
 
     //BillBlaster();                                        // 0x021271b4
 
-    static CLPS_Block clps;
     static SharedFilePtr bulletModel1;
     static SharedFilePtr bulletModel2;
     static SharedFilePtr modelFile;

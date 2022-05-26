@@ -1,6 +1,5 @@
 #include "BillBlaster.h"
 #include "BulletBill.h"
-#include "Particle.h"
 
 SharedFilePtr BillBlaster::bulletModel1;
 SharedFilePtr BillBlaster::bulletModel2;
@@ -19,9 +18,26 @@ SpawnInfo BillBlaster::spawnData = // 0x02127f94
 	0x00000000_f
 };
 
-CLPS_Block BillBlaster::clps = // 0x02127e7c
+FixedSizeCLPS_Block<1> clpsBlock = // 0x02127e7c
 {
-    // TODO!!!
+    {'C', 'L', 'P', 'S'},
+    8,
+    1,
+    {
+        // low: 0x01040FC4, high: 0x000000ff
+        CLPS(
+            CLPS::_TextureID::TX_ROCK,
+            0,
+            0x3f,
+            CLPS::_TractionID::TR_UNSLIPPABLE,
+            CLPS::_CamBehavID::CA_GO_BEHIND_8,
+            CLPS::_BehaviorID::BH_NORMAL,
+            1,
+            0,
+            0,
+            0xff
+        )
+    }
 };
 
 int BillBlaster::InitResources()
@@ -31,10 +47,11 @@ int BillBlaster::InitResources()
     model.SetFile(Model::LoadFile(modelFile), 1, -1);
     UpdateModelPosAndRotY();
     UpdateClsnPosAndRot();
-    clsn.SetFile(MovingMeshCollider::LoadFile(clsnFile), clsnNextMat, 0x199_f, ang.y, clps);
+    clsn.SetFile(MovingMeshCollider::LoadFile(clsnFile), clsnNextMat, 0x199_f, ang.y, (CLPS_Block&)clpsBlock);
     bulletID = 0;
-    // TODO: REST OF INIT!
-    return 1;
+    if (LEVEL_ID == 18 && SAVE_DATA.keysObtained & 0x204) return 0;
+    else if (LEVEL_ID == 7 && (STAR_ID == 1 || !StarCollectedInCurrLevel(1)) && pos.y > 0xdabfff_f) return 0;
+    else return 1;
 }
 
 int BillBlaster::CleanupResources()
