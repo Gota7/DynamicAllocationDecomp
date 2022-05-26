@@ -251,8 +251,8 @@ struct CylinderClsn
 	unsigned vulnerableFlags;
 	unsigned hitFlags;
 	unsigned otherObjID;
-	CylinderClsn* prev; //0x2c
-	CylinderClsn* next; //0x30
+	CylinderClsn* prev; //0x28
+	CylinderClsn* next; //0x2C
 	
 	CylinderClsn();
 	virtual ~CylinderClsn();
@@ -391,8 +391,8 @@ struct SphereClsn : public BgCh
 	bool DetectClsn();
 	ClsnResult& SetFloorResult(const ClsnResult& result);
 	
-	unsigned* sphVTable; // 0x40
-	Vector3 pos; //0x44
+	unsigned* sphVTable; // 0x38
+	Vector3 pos; //0x3C
 	Fix12i radius; //0x48
 	Vector3 pushback; //0x4c, 0x50, 0x54
 	Vector3 pushback0; //0x58, 0x5c, 0x60
