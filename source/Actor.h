@@ -218,6 +218,7 @@ struct Actor : public ActorBase				//internal name: dActor
 
 	bool IsTooFarAwayFromPlayer(Fix12i tooFar);
 	void MakeVanishLuigiWork(CylinderClsn& cylClsn);
+	bool PlaySecretJingle(short& jingleTimer);
 	void SpawnSoundObj(unsigned soundObjParam);
 
 	void KillAndTrackInDeathTable();

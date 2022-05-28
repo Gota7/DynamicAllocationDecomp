@@ -176,7 +176,9 @@ struct Platform : public Actor
 	Model model;				// 0xd4
 	MovingMeshCollider clsn;	// 0x124
 	Matrix4x3 clsnNextMat;		// 0x2ec
-	unsigned unk31c;			// 0x31c
+	uint16_t unk31c;			// 0x31c
+	uint8_t	platformType;		// 0x31e, Used for actors where the actor ID determines functionality. This is an index of the different kinds.
+	uint8_t platformSpriteData; // 0x31f
 	
 	Platform();
 	virtual ~Platform();

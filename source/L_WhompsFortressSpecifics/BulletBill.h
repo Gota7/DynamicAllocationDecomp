@@ -5,6 +5,9 @@
 
 struct BillBlaster;
 
+const uint16_t BULLET_BILL_OBJECT_ID = 0xBE;
+const uint16_t BULLET_BILL_ACTOR_ID = 0xDE;
+
 // vtable at 0x, size is 0x3E0, actor id is 0xDE
 struct BulletBill : Enemy
 {

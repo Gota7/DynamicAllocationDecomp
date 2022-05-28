@@ -9,8 +9,8 @@ SharedFilePtr BillBlaster::clsnFile;
 SpawnInfo BillBlaster::spawnData = // 0x02127f94
 {
 	[]() -> ActorBase* { return new BillBlaster; },
-	0x002B,
-	0x00C4,
+	BILL_BLASTER_ACTOR_ID,
+	BILL_BLASTER_OBJECT_ID - 1,
 	0x00000002,
 	0x00200000_f,
 	0x01000000_f,
@@ -81,7 +81,7 @@ int BillBlaster::Behavior()
             {
                 Vector3 spawnPos = pos;
                 spawnPos.y += 0x96000_f;
-                BulletBill* bullet = (BulletBill*)Actor::Spawn(0xde, 0, &spawnPos, ang, areaID, -1);
+                BulletBill* bullet = (BulletBill*)Actor::Spawn(BULLET_BILL_ACTOR_ID, 0, &spawnPos, ang, areaID, -1);
                 bulletID = bullet->uniqueID;
                 bullet->billBlaster = this;
             }
@@ -106,7 +106,7 @@ void BillBlaster::OnHitByMegaChar(Player& megaChar)
 
 void BillBlaster::Kill()
 {
-    Particle::System::NewSimple(PTS_TRIANGLES_BIG_GRAY_2, pos.x, pos.y, pos.z);
+    Particle::System::NewSimple(Particle::PTS_TRIANGLES_BIG_GRAY_2, pos.x, pos.y, pos.z);
     PoofDustAt(pos);
     Sound::PlayBank3(0xF, &camSpacePos);
     Destroy();

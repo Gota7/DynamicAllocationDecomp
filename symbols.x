@@ -184,6 +184,7 @@ _ZN8CapEnemyC2Ev                                                                
                                                         
 _ZN5Actor22IsTooFarAwayFromPlayerE5Fix12IiE                                       = 0x0200f70c;
 _ZN5Actor19MakeVanishLuigiWorkER12CylinderClsn                                    = 0x0200f7a8;
+_ZN5Actor16PlaySecretJingleRs                                                     = 0x0200f8f8;
 _ZN5Actor13SpawnSoundObjEj                                                        = 0x0200f97c;
 _ZN5Actor24KillAndTrackInDeathTableEv                                             = 0x0200f9b8;
 _ZN5Actor19UntrackInDeathTableEv                                                  = 0x0200f9d4;

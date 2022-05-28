@@ -3,6 +3,9 @@
 
 #include "../SM64DS_2.h"
 
+const uint16_t BILL_BLASTER_OBJECT_ID = 0xC5;
+const uint16_t BILL_BLASTER_ACTOR_ID = 0x2B;
+
 // vtable at 0x02127fb8, size is 0x324, actor id is 0x2B
 struct BillBlaster : Platform
 {

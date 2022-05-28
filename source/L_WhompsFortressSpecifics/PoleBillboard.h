@@ -3,9 +3,13 @@
 
 #include "../SM64DS_2.h"
 
+const uint16_t POLE_BILLBOARD_OBJECT_ID = 0xC4;
+const uint16_t POLE_BILLBOARD_ACTOR_ID = 0x2A;
+
 // vtable at 0x02114360, size is 0x124, actor id is 0x2A
-struct PoleBillboard : Platform
+struct PoleBillboard : Actor
 {
+    Model model;
 
     virtual int InitResources() override;		// 0x021112a0
 	virtual int CleanupResources() override;	// 0x02111254
